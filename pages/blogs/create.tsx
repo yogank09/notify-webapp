@@ -99,7 +99,7 @@ const CreateBlogPage: React.FC = () => {
 
             <Divider sx={{ my: 4 }} />
 
-            <Typography variant="h2" className="mb-4">Blogger Information</Typography>
+            <Typography variant="h2" className="mb-4">Blogger Information yogank</Typography>
 
             <TextField fullWidth label="Name *" name="bloggerName" value={form.bloggerName} onChange={handleChange} required className="mb-4" />
             <TextField fullWidth label="Email *" name="bloggerEmail" type="email" value={form.bloggerEmail} onChange={handleChange} required className="mb-4" />

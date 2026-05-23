@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid2';
 import AddIcon from '@mui/icons-material/Add';
 import { IBlog } from '@appTypes/index';
 import { formatDate, truncateText } from '@utils/index';
+import UploadPage from 'pages/upload';
 
 const BlogsPage: React.FC = () => {
   const [blogs, setBlogs] = useState<IBlog[]>([]);
@@ -29,6 +30,7 @@ const BlogsPage: React.FC = () => {
 
   return (
     <Layout>
+      <UploadPage />
       <Box className="flex justify-between items-center mb-6">
         <Typography variant="h1">Blogs</Typography>
         <Button variant="contained" component={Link} href="/blogs/create" startIcon={<AddIcon />}>
