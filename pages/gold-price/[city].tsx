@@ -1,5 +1,5 @@
 import React from 'react';
-import type { GetServerSideProps } from 'next';
+import type { GetStaticPaths, GetStaticProps } from 'next';
 import Link from 'next/link';
 import axios from 'axios';
 import { Layout, SEO } from '@components/common';
@@ -324,14 +324,17 @@ const CityGoldPricePage: React.FC<CityGoldPricePageProps> = ({ city, cityName, c
   );
 };
 
-export const getServerSideProps: GetServerSideProps<CityGoldPricePageProps> = async ({ params, res }) => {
+export const getStaticPaths: GetStaticPaths = async () => ({
+  paths: Object.keys(VALID_CITIES).map((city) => ({ params: { city } })),
+  fallback: false,
+});
+
+export const getStaticProps: GetStaticProps<CityGoldPricePageProps> = async ({ params }) => {
   const citySlug = String(params?.city || '').toLowerCase();
 
   if (!VALID_CITIES[citySlug]) {
     return { notFound: true };
   }
-
-  res.setHeader('Cache-Control', 'public, s-maxage=300, stale-while-revalidate=600');
 
   const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import type { GetServerSideProps } from 'next';
+import type { GetStaticProps } from 'next';
 import Link from 'next/link';
 import axios from 'axios';
 import { Layout, SEO } from '@components/common';
@@ -329,10 +329,7 @@ const PriceCard: React.FC<PriceCardProps> = ({ title, usd, usdLabel, inr, inrLab
   </Card>
 );
 
-export const getServerSideProps: GetServerSideProps<GoldPricePageProps> = async ({ res }) => {
-  // Cache at the CDN/edge for 5 min, allow stale for 10 min
-  res.setHeader('Cache-Control', 'public, s-maxage=300, stale-while-revalidate=600');
-
+export const getStaticProps: GetStaticProps<GoldPricePageProps> = async () => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
 
   let prices: IMetalPrice[] = [];

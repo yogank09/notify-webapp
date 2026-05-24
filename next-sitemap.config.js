@@ -1,6 +1,7 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://notify.com',
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://yogank09.github.io/notify-webapp',
+  outDir: './out',
   generateRobotsTxt: false,
   changefreq: 'daily',
   priority: 0.7,
